@@ -1,0 +1,29 @@
+%offscreen {
+    position: absolute;
+    left: -10000px;
+}
+
+%nowrap {
+    white-space: nowrap;
+}
+
+%link {
+    display: inline-block;
+    transition: scale 0.125s;
+
+    &:any-link {
+        color: var(--TEXT-COLOR)
+    }
+
+    &:hover, &:focus-visible {
+        scale: 1.025;
+    }
+
+    &:active {
+        scale: 0.975;
+    }
+}
+
+@mixin button() {
+
+}
