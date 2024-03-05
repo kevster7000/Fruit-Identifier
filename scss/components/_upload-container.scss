@@ -1,0 +1,40 @@
+@use "./../abstracts/" as *;
+
+.upload-container {
+    text-align: center;
+    color: var(--TEXT-COLOR-PRIMARY);
+    position: relative;
+    display: grid;
+    place-content: center;
+    position: relative;
+    cursor: pointer;
+    background-color: var(--INPUT-BG-COLOR);
+    border-radius: 20px;
+    border: transparent;
+    box-shadow: var(--INPUT-SHADOW);
+    margin-inline: 2rem;
+
+    //TODO
+    .upload-btn-container {
+        // border-bottom: ;
+
+        ::after {
+            content: "or";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: auto;
+            height: auto;
+            background-color: var(--INPUT-BG-COLOR);
+        }
+
+        .upload-btn {
+            // background-color: ;
+        }
+
+        input[type="file"] {
+            visibility: hidden;
+        }
+    }
+}

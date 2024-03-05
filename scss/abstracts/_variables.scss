@@ -4,30 +4,47 @@
 
     /****************** SPACING (PADDING & MARGIN & GAP) ******************/
 
-    --SPACING-XL: clamp(1rem, 4.75vw, 2rem);
-    --SPACING-LG: clamp(0.5rem, 3.25vw, 1.25rem);
-    --SPACING-MD: clamp(0.25rem, 1.35vw, 0.75rem);
-    --SPACING-SM: clamp(0.125rem, 0.75vw, 0.5rem);
-    --SPACING-XS: clamp(0.075rem, 0.35vw, 0.25rem);
+    //TODO
+
+    --SPACING-XL: 4rem;
+    --SPACING-LG: 2rem;
+    --SPACING-MD: 1rem;
+    --SPACING-SM: 0.5rem;
+    --SPACING-XS: 0.25rem;
 
     /****************** FONT SIZES ******************/
 
-    --FS-XL: clamp(1.25rem, 5.5vh, 3rem);
-    --FS-LG: clamp(0.5rem, 7.25vw, 1.5rem);
-    --FS-MD: clamp(0.75rem, 3vh, 1.5rem);
-    --FS-SM: clamp(0.5rem, 2.175vh, 1rem);
-    --FS-XS: clamp(11px, 2.5vw, 14px);
-
-    --FS-BTN-LG: clamp(0.8rem, 6.5vw, 1.75rem);
-    --FS-BTN-MD: clamp(0.6rem, 5vw, 1.35rem);
-    --FS-BTN-SM: clamp(0.35rem, 4vw, 1.25rem);
+    --FS-XL: 3rem;
+    --FS-LG: 1.5rem;
+    --FS-MD: 1rem;
+    --FS-SM: 0.75rem;
+    --FS-XS: 0.5rem;
 }
 
 :root.theme-light {
     /****************** COLORS ******************/
+    --TEXT-COLOR-PRIMARY: #181714;
+    --TEXT-COLOR-SECONDARY: #2f2e2d;
+    --TEXT-COLOR-ACCENT: #674f53;
 
+    --GRADIENT-BG-LEFT: #f0a3b9;
+    --GRADIENT-BG-MID: #f09579;
+    --GRADIENT-BG-RIGHT: #f2dc90;
+
+    --INPUT-BG-COLOR: #f1eee8;
+    --INPUT-SHADOW: 0px 1px 12px #57544c;
 }
 
 :root.theme-dark {
     /****************** COLORS ******************/
+    --TEXT-COLOR-PRIMARY: #fbf9f2;
+    --TEXT-COLOR-SECONDARY: #f5f4f0;
+    --TEXT-COLOR-ACCENT: #f6de91;
+
+    --GRADIENT-BG-LEFT: #312c2f;
+    --GRADIENT-BG-MID: #2a272f;
+    --GRADIENT-BG-RIGHT: #2b3034;
+
+    --INPUT-BG-COLOR: hsla(40, 2%, 45%, 0.75);
+    --INPUT-SHADOW: 0px 1px 12px #545452;
 }

@@ -5,6 +5,47 @@ setInterval(() => {
     document.documentElement.style.setProperty("--GRADIENT-DEG", deg % 360 + "deg");
 }, 70);
 
+let themeBtn = document.querySelector(".theme");
+themeBtn.addEventListener("click", () => {
+    themeBtn.classList.toggle("light");
+    themeBtn.classList.toggle("dark");
+    document.documentElement.classList.toggle("theme-light");
+    document.documentElement.classList.toggle("theme-dark");
+});
+
+
+/* Populate the all fruits list with 
+
+model.getTotalClasses()
+*/
+
+
+/* For use input
+
+model.predict(
+  image: HTMLImageElement | HTMLCanvasElement | HTMLVideoElement | ImageBitmap,
+  flipped = false
+)
+
+model.predictTopK(
+  image: HTMLImageElement | HTMLCanvasElement | HTMLVideoElement | ImageBitmap,
+  maxPredictions = 10,
+  flipped = false
+)
+
+*/
+
+
+/* FOR WEBCAM
+new tmImage.Webcam(
+    width = 400,
+    height = 400,
+    flip = false,
+)
+
+*/
+
+
 
 
 

@@ -1,30 +1,65 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap");
 :root {
   /******************  MISCELLANEOUS ******************/
   --GRADIENT-DEG: 0deg;
   /****************** SPACING (PADDING & MARGIN & GAP) ******************/
-  --SPACING-XL: clamp(1rem, 4.75vw, 2rem);
-  --SPACING-LG: clamp(0.5rem, 3.25vw, 1.25rem);
-  --SPACING-MD: clamp(0.25rem, 1.35vw, 0.75rem);
-  --SPACING-SM: clamp(0.125rem, 0.75vw, 0.5rem);
-  --SPACING-XS: clamp(0.075rem, 0.35vw, 0.25rem);
+  --SPACING-XL: 4rem;
+  --SPACING-LG: 2rem;
+  --SPACING-MD: 1rem;
+  --SPACING-SM: 0.5rem;
+  --SPACING-XS: 0.25rem;
   /****************** FONT SIZES ******************/
-  --FS-XL: clamp(1.25rem, 5.5vh, 3rem);
-  --FS-LG: clamp(0.5rem, 7.25vw, 1.5rem);
-  --FS-MD: clamp(0.75rem, 3vh, 1.5rem);
-  --FS-SM: clamp(0.5rem, 2.175vh, 1rem);
-  --FS-XS: clamp(11px, 2.5vw, 14px);
-  --FS-BTN-LG: clamp(0.8rem, 6.5vw, 1.75rem);
-  --FS-BTN-MD: clamp(0.6rem, 5vw, 1.35rem);
-  --FS-BTN-SM: clamp(0.35rem, 4vw, 1.25rem);
+  --FS-XL: 3rem;
+  --FS-LG: 1.5rem;
+  --FS-MD: 1rem;
+  --FS-SM: 0.75rem;
+  --FS-XS: 0.5rem;
 }
 
 :root.theme-light {
   /****************** COLORS ******************/
+  --TEXT-COLOR-PRIMARY: #181714;
+  --TEXT-COLOR-SECONDARY: #2f2e2d;
+  --TEXT-COLOR-ACCENT: #674f53;
+  --GRADIENT-BG-LEFT: #f0a3b9;
+  --GRADIENT-BG-MID: #f09579;
+  --GRADIENT-BG-RIGHT: #f2dc90;
+  --INPUT-BG-COLOR: #f1eee8;
+  --INPUT-SHADOW: 0px 1px 12px #57544c;
 }
 
 :root.theme-dark {
   /****************** COLORS ******************/
+  --TEXT-COLOR-PRIMARY: #fbf9f2;
+  --TEXT-COLOR-SECONDARY: #f5f4f0;
+  --TEXT-COLOR-ACCENT: #f6de91;
+  --GRADIENT-BG-LEFT: #312c2f;
+  --GRADIENT-BG-MID: #2a272f;
+  --GRADIENT-BG-RIGHT: #2b3034;
+  --INPUT-BG-COLOR: hsla(40, 2%, 45%, 0.75);
+  --INPUT-SHADOW: 0px 1px 12px #545452;
+}
+
+header .header-nav button span, header .header-nav a span {
+  position: absolute;
+  left: -10000px;
+}
+
+header .header-title p a {
+  display: inline-block;
+  transition: scale 0.125s;
+}
+header .header-title p a:-moz-any-link {
+  color: var(--TEXT-COLOR-ACCENT);
+}
+header .header-title p a:any-link {
+  color: var(--TEXT-COLOR-ACCENT);
+}
+header .header-title p a:hover, header .header-title p a:focus-visible {
+  scale: 1.025;
+}
+header .header-title p a:active {
+  scale: 0.975;
 }
 
 * {
@@ -46,40 +81,232 @@ form, input, button, label, textarea {
   font: inherit;
 }
 
+header {
+  width: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-flow: row nowrap;
+      flex-flow: row nowrap;
+  padding: 1rem 2rem;
+  color: var(--TEXT-COLOR-PRIMARY);
+}
+header .header-title {
+  line-height: 0.75;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+  -ms-flex-align: end;
+      align-items: flex-end;
+  -ms-flex-flow: row nowrap;
+      flex-flow: row nowrap;
+  gap: 0.25rem;
+}
+header .header-title p {
+  color: var(--TEXT-COLOR-SECONDARY);
+}
+header .header-nav {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: end;
+      justify-content: flex-end;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-flow: row nowrap;
+      flex-flow: row nowrap;
+  -ms-flex-positive: 1;
+      flex-grow: 1;
+  gap: 0.5rem;
+}
+header .header-nav button, header .header-nav a {
+  text-decoration: none;
+  font-size: 24px;
+  background-color: transparent;
+  border: transparent;
+  padding: 0.25rem;
+  color: var(--TEXT-COLOR-PRIMARY);
+  cursor: pointer;
+  transition: scale 0.15s;
+}
+header .header-nav button:hover, header .header-nav button:focus-visible, header .header-nav a:hover, header .header-nav a:focus-visible {
+  scale: 1.1;
+}
+header .header-nav button:active, header .header-nav a:active {
+  scale: 0.925;
+}
+header .header-nav button svg, header .header-nav a svg {
+  width: 32px;
+  height: 32px;
+}
+header .header-nav button svg {
+  stroke: var(--TEXT-COLOR-PRIMARY);
+}
+header .header-nav a svg {
+  fill: var(--TEXT-COLOR-PRIMARY);
+}
+header .header-nav .theme.light #light-theme-icon {
+  display: block;
+}
+header .header-nav .theme.light #dark-theme-icon {
+  display: none;
+}
+header .header-nav .theme.dark #light-theme-icon {
+  display: none;
+}
+header .header-nav .theme.dark #dark-theme-icon {
+  display: block;
+}
+
+@media screen and (max-width: 576px) {
+  header .header-title {
+    line-height: 1.1;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: start;
+        justify-content: flex-start;
+    -ms-flex-align: start;
+        align-items: flex-start;
+    -ms-flex-flow: column nowrap;
+        flex-flow: column nowrap;
+  }
+}
+.hero {
+  text-align: center;
+  color: var(--TEXT-COLOR-PRIMARY);
+  margin-inline: 2rem;
+}
+.hero h2 {
+  font-size: 64px;
+  font-weight: 900;
+  line-height: 1;
+}
+.hero p {
+  font-size: 24px;
+}
+
+.upload-container {
+  text-align: center;
+  color: var(--TEXT-COLOR-PRIMARY);
+  position: relative;
+  display: grid;
+  place-content: center;
+  position: relative;
+  cursor: pointer;
+  background-color: var(--INPUT-BG-COLOR);
+  border-radius: 20px;
+  border: transparent;
+  box-shadow: var(--INPUT-SHADOW);
+  margin-inline: 2rem;
+}
+.upload-container .upload-btn-container ::after {
+  content: "or";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  background-color: var(--INPUT-BG-COLOR);
+}
+.upload-container .upload-btn-container input[type=file] {
+  visibility: hidden;
+}
+
+.fruits {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-flow: column nowrap;
+      flex-flow: column nowrap;
+  color: var(--TEXT-COLOR-PRIMARY);
+  position: relative;
+  background-color: var(--INPUT-BG-COLOR);
+  border-radius: 20px;
+  border: transparent;
+  box-shadow: var(--INPUT-SHADOW);
+  margin-inline: 2rem;
+}
+.fruits .fruits-header {
+  text-align: center;
+  width: 100%;
+  border-radius: 20px 20px 0 0;
+  padding: 1rem;
+  background-color: red;
+}
+.fruits .fruits-list {
+  list-style: none;
+  width: 100%;
+  height: 31vh;
+  overflow: auto;
+}
+.fruits .fruits-list li {
+  padding: 0.75rem;
+  padding-left: 2rem;
+  border-bottom: 1px solid var(--TEXT-COLOR-PRIMARY);
+}
+.fruits .fruits-list::-webkit-scrollbar {
+  width: 10px;
+}
+.fruits .fruits-list::-webkit-scrollbar-track {
+  background: var(--INPUT-BG-COLOR);
+}
+.fruits .fruits-list::-webkit-scrollbar-thumb {
+  background: var(--TEXT-COLOR-PRIMARY);
+}
+.fruits .fruits-list::-webkit-scrollbar-thumb:hover {
+  background: black;
+}
+
 body {
-  background: linear-gradient(var(--GRADIENT-DEG), #c5b4c7, #f49477, #f9f1b2);
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-flow: column nowrap;
+      flex-flow: column nowrap;
+  background-color: #f7eb91;
+  background: linear-gradient(var(--GRADIENT-DEG), var(--GRADIENT-BG-LEFT), var(--GRADIENT-BG-MID), var(--GRADIENT-BG-RIGHT));
   background-size: 300% 300%;
   animation: gradient 15s ease infinite;
-  min-height: 100vh;
+  min-height: 100svh;
 }
 
 @keyframes gradient {
   0% {
-    background-position: 0% 0%;
+    background-position: 20% 20%;
   }
   25% {
-    background-position: 100% 0%;
+    background-position: 80% 20%;
   }
   50% {
-    background-position: 100% 100%;
+    background-position: 80% 80%;
   }
   75% {
-    background-position: 0% 100%;
+    background-position: 20% 80%;
   }
   100% {
-    background-position: 0% 0%;
+    background-position: 20% 20%;
   }
 }
 main {
-  background-color: var(--BG-COLOR);
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-flow: row nowrap;
-      flex-flow: row nowrap;
-  padding: var(--SPACING-XL);
-}
-
-main > div {
   -ms-flex-positive: 1;
       flex-grow: 1;
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  grid-template-rows: 1fr 1fr;
+  margin: 3rem 2rem;
+  margin-top: 1.5rem;
+}
+main .upload-container {
+  grid-column: 2/3;
+  grid-row: 1/3;
 }/*# sourceMappingURL=style.css.map */

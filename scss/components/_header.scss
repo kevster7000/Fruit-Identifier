@@ -1,0 +1,76 @@
+@use "./../abstracts" as *;
+
+header {
+    width: 100%;
+    @include flex(space-between);
+    padding: 1rem 2rem;
+    color: var(--TEXT-COLOR-PRIMARY);
+
+    .header-title {
+        line-height: 0.75;
+        @include flex(flex-start, flex-end);
+        gap: 0.25rem;
+
+        p {
+            color: var(--TEXT-COLOR-SECONDARY);
+
+            a {
+                @extend %link;
+            }
+        }
+    }
+
+    .header-nav {
+        @include flex(flex-end);
+        flex-grow: 1;
+        gap: 0.5rem;
+        
+        button, a {
+            text-decoration: none;
+            font-size: 24px;
+            @include button();
+
+            svg {
+                width: 32px;
+                height: 32px;
+            }
+
+            span {
+                @extend %offscreen;
+            }
+        }
+
+        button svg {
+            stroke: var(--TEXT-COLOR-PRIMARY);
+        }
+
+        a svg {
+            fill: var(--TEXT-COLOR-PRIMARY);
+        }
+
+        .theme.light {
+            #light-theme-icon {
+                display: block;
+            }
+            #dark-theme-icon {
+                display: none;
+            }
+        }
+
+        .theme.dark {
+            #light-theme-icon {
+                display: none;
+            }
+            #dark-theme-icon {
+                display: block;
+            }
+        }
+    }
+}
+
+@include media-sm {
+    header .header-title {
+        line-height: 1.1;
+        @include flex(flex-start, flex-start, column);
+    }
+}
