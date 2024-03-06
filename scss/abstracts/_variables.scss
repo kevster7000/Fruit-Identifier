@@ -23,28 +23,40 @@
 
 :root.theme-light {
     /****************** COLORS ******************/
-    --TEXT-COLOR-PRIMARY: #181714;
-    --TEXT-COLOR-SECONDARY: #2f2e2d;
-    --TEXT-COLOR-ACCENT: #674f53;
+    --TEXT-COLOR-PRIMARY: #22211f;
+    --TEXT-COLOR-SECONDARY: #3b3a38;
 
     --GRADIENT-BG-LEFT: #f0a3b9;
     --GRADIENT-BG-MID: #f09579;
     --GRADIENT-BG-RIGHT: #f2dc90;
 
-    --INPUT-BG-COLOR: #f1eee8;
-    --INPUT-SHADOW: 0px 1px 12px #57544c;
+    --INPUT-BG-COLOR: #faf7f1;
+    --INPUT-SHADOW: 0px 1px 14px #605d56;
+    --INPUT-BTN-COLOR: #477cf9;
+
+    --FRUITS-HEADER-BG: #504a4b;
+    --FRUITS-HEADER-TEXT: #fbfcff;
+    --FRUITS-BORDER-COLOR: #a8a7a3;
+
+    --CAMERA-BTN-BORDER: var(--FRUITS-BORDER-COLOR);
 }
 
 :root.theme-dark {
     /****************** COLORS ******************/
-    --TEXT-COLOR-PRIMARY: #fbf9f2;
-    --TEXT-COLOR-SECONDARY: #f5f4f0;
-    --TEXT-COLOR-ACCENT: #f6de91;
+    --TEXT-COLOR-PRIMARY: #e0e2e9;
+    --TEXT-COLOR-SECONDARY: #b9b9c2;
 
     --GRADIENT-BG-LEFT: #312c2f;
     --GRADIENT-BG-MID: #2a272f;
     --GRADIENT-BG-RIGHT: #2b3034;
 
-    --INPUT-BG-COLOR: hsla(40, 2%, 45%, 0.75);
-    --INPUT-SHADOW: 0px 1px 12px #545452;
+    --INPUT-BG-COLOR: #44434a;
+    --INPUT-SHADOW: 0px 1px 14px #1b191b;
+    --INPUT-BTN-COLOR: #6389e0;
+
+    --FRUITS-HEADER-BG: var(--TEXT-COLOR-SECONDARY);
+    --FRUITS-HEADER-TEXT: #39363a;
+    --FRUITS-BORDER-COLOR: hsla(240, 7%, 62%, 70%);
+
+    --CAMERA-BTN-BORDER: hsla(240, 3%, 51%, 0.85);
 }

@@ -2,7 +2,6 @@
 
 .fruits {
     @include flex(flex-start, center, column);
-    color: var(--TEXT-COLOR-PRIMARY);
     position: relative;
     background-color: var(--INPUT-BG-COLOR);
     border-radius: 20px;
@@ -15,7 +14,8 @@
         width: 100%;
         border-radius: 20px 20px 0 0;
         padding: 1rem;
-        background-color: red;
+        background-color: var(--FRUITS-HEADER-BG);
+        color: var(--FRUITS-HEADER-TEXT);
     }
 
     .fruits-list {
@@ -25,25 +25,10 @@
         overflow: auto;
 
         li {
+            color: var(--TEXT-COLOR-PRIMARY);
             padding: 0.75rem;
             padding-left: 2rem;
-            border-bottom: 1px solid var(--TEXT-COLOR-PRIMARY);
-        }
-
-        &::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        &::-webkit-scrollbar-track {
-            background: var(--INPUT-BG-COLOR);
-        }
-
-        &::-webkit-scrollbar-thumb {
-            background: var(--TEXT-COLOR-PRIMARY);
-        }
-        
-        &::-webkit-scrollbar-thumb:hover {
-            background: black;
+            border-bottom: 1px solid var(--FRUITS-BORDER-COLOR);
         }
     }
 }

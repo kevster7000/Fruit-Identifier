@@ -28,7 +28,7 @@
     <header>
         <div class="header-title">
             <h1>Fruit Identifier</h1>
-            <p>By <a href="https://github.com/kevster7000" target="_blank">Kevin Tang</a></p>
+            <p>By <a href="https://github.com/kevster7000" target="_blank">Kevin Tan<span>g</span></a></p>
         </div>
         <div class="header-nav">
             <a href="https://github.com/kevster7000/Fruit-Identifier" target="_blank">
@@ -55,24 +55,27 @@
         </div>
     </header>
     <main>
-        <div class="hero">
-            <h2>WHAT'S THAT FRUIT?!</h2>
+        <section class="hero">
+            <h2>WHAT'S THAT FRUIT?</h2>
             <p>Don't know the name of a fruit in English? Upload an image of it to find out!</p>
-        </div>
+        </section>
         <div class="upload-container">
-            <div>
-                <div class="upload-btn-container">
-                    <button class="upload-btn">Upload an Image</button>
-                    
-                    <input id="getFile" type="file">
+            <span><h2>Upload Image</h2></span>
+            <div class="upload-btn-container">
+                <button class="upload-btn">Upload Image</button>
+                <input id="getFile" type="file">
+                <div class="divider">
+                    <p><span>or</span></p>
                 </div>
-                <button class="camera-btn" type="button" onclick="init()">Use Camera</button>
+            </div>
+            <div class="camera-btn-container">
+                <button class="camera-btn" type="button">Use Camera</button>
             </div>
             <!--
             <div id="webcam-container"></div>
             <div id="label-container"></div> -->
         </div>
-        <div class="fruits">
+        <section class="fruits">
             <div class="fruits-header">
                 <h2>All Fruits Accounted for</h2>
             </div>
@@ -86,7 +89,7 @@
                 <li>Hello</li>
                 <li>Hello</li>
             </ul>
-        </div>
+        </section>
     </main>
 </body>
 </html>

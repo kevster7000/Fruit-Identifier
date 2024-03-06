@@ -1,18 +1,50 @@
+document.addEventListener("DOMContentLoaded", initApp);
+function initApp() {
 
+//Background Gradient
 setInterval(() => {
     let deg = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--GRADIENT-DEG"));
-    deg++;
-    document.documentElement.style.setProperty("--GRADIENT-DEG", deg % 360 + "deg");
+    deg = (deg+1) % 360;
+    document.documentElement.style.setProperty("--GRADIENT-DEG", deg + "deg");
 }, 70);
 
+//Theme Toggle
 let themeBtn = document.querySelector(".theme");
 themeBtn.addEventListener("click", () => {
-    themeBtn.classList.toggle("light");
-    themeBtn.classList.toggle("dark");
-    document.documentElement.classList.toggle("theme-light");
-    document.documentElement.classList.toggle("theme-dark");
+    if(themeBtn.classList.contains("light")) toDarkTheme();
+    else toLightTheme();
 });
 
+function toLightTheme() {
+    themeBtn.classList.add("light");
+    themeBtn.classList.remove("dark");
+    document.documentElement.classList.add("theme-light");
+    document.documentElement.classList.remove("theme-dark");
+    localStorage.setItem("theme", "light");
+}
+
+function toDarkTheme() {
+    themeBtn.classList.remove("light");
+    themeBtn.classList.add("dark");
+    document.documentElement.classList.remove("theme-light");
+    document.documentElement.classList.add("theme-dark");
+    localStorage.setItem("theme", "dark");
+}
+
+//Default Theme
+if(localStorage.getItem("theme")) {
+    let currTheme = localStorage.getItem("theme");
+    if(currTheme === "light") toLightTheme();
+    else toDarkTheme();
+}
+else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    toDarkTheme();
+} 
+else {
+    toLightTheme();
+}
+
+}
 
 /* Populate the all fruits list with 
 

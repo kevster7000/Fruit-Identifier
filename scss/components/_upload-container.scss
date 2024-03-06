@@ -1,40 +1,108 @@
 @use "./../abstracts/" as *;
 
 .upload-container {
+    @include flex(center, center, column);
     text-align: center;
     color: var(--TEXT-COLOR-PRIMARY);
     position: relative;
-    display: grid;
-    place-content: center;
-    position: relative;
-    cursor: pointer;
     background-color: var(--INPUT-BG-COLOR);
     border-radius: 20px;
     border: transparent;
     box-shadow: var(--INPUT-SHADOW);
     margin-inline: 2rem;
+    gap: 0.5rem;
 
-    //TODO
+    h2 {
+        @extend %offscreen;
+    }
+
     .upload-btn-container {
-        // border-bottom: ;
-
-        ::after {
-            content: "or";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: auto;
-            height: auto;
-            background-color: var(--INPUT-BG-COLOR);
-        }
+        position: relative;
 
         .upload-btn {
-            // background-color: ;
+            background-color: var(--INPUT-BTN-COLOR);
+            color: white;
+            border-radius: 18px;
+            border: transparent;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            font-size: 28px;
+            font-weight: 500;
+            transition: transform 0.2s, filter 0.2s;
+
+            &:hover, &:focus-visible {
+                transform: scale(1.025) translateY(-2px);
+                filter: brightness(1.1);
+            }
+        
+            &:active {
+                transition: transform 0.1s, filter 0.1s;
+                transform: scale(.975) translateY(1px);
+                filter: brightness(0.9);
+            }
         }
 
         input[type="file"] {
-            visibility: hidden;
+            display: none;
+        }
+
+        .divider {
+            margin-top: 0.5rem;
+            width: 100%;
+            position: relative;
+
+            p {
+                font-size: 20px;
+                line-height: 20px;
+
+                span {
+                    background-color: var(--INPUT-BG-COLOR);
+                    color: var(--TEXT-COLOR-SECONDARY);
+                    position: relative;
+                    z-index: 2;
+                    padding-inline: 0.5rem;
+                }
+
+                ::before {
+                    display: none;
+                }
+            }
+
+            ::before {
+                content: "";
+                position: absolute;
+                z-index: 0;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 50%;
+                height: 5%;
+                background-color: var(--TEXT-COLOR-SECONDARY);
+            }
+        }
+    }
+
+    .camera-btn-container {
+        margin-top: 0.125rem;
+
+        .camera-btn {
+            background-color: transparent;
+            border: 1px solid var(--CAMERA-BTN-BORDER);
+            border-radius: 12px;
+            padding: 0.5rem 1rem;
+            color: var(--TEXT-COLOR-PRIMARY);
+            cursor: pointer;
+            font-size: 20px;
+            transition: transform 0.2s;
+
+            &:hover, &:focus-visible {
+                transform: scale(1.025) translateY(1px);
+            }
+        
+            &:active {
+                transition: transform 0.1s;
+                transform: scale(.975) translateY(-1px);
+            }
         }
     }
 }
