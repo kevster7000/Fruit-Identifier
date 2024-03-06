@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Kevin Tang">
     <meta name="keywords" content="fruit, fruit name, fruit identifier">
-    <meta name="description" content="Upload an image of a fruit to find out its name in English! The Fruit Identifier is a Machine Learning project made by Kevin Tang for Assignment 7 in CSCE 436, Human Computer Interaction.">
+    <meta name="description" content="Upload an image of a fruit to find out its name in English! The Fruit Identifier is a Machine Learning project made by Kevin Tang for CSCE 436, Human Computer Interaction.">
     <title>Fruit Identifier</title>
     <link rel="icon" href="./assets/favicon.png">
     <link rel="stylesheet" href="./css/style.css">
@@ -13,10 +13,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <meta property="og:title" content="Fruit Identifier">
-    <meta property="og:description" content="Upload an image of a fruit to find out its name in English! The Fruit Identifier is a Machine Learning project made by Kevin Tang for Assignment 7 in CSCE 436, Human Computer Interaction.">
+    <meta property="og:description" content="Upload an image of a fruit to find out its name in English! The Fruit Identifier is a Machine Learning project made by Kevin Tang for CSCE 436, Human Computer Interaction.">
     <meta property="og:image" content="https://kevster7000.github.io/Aesthetic-Calculator/assets/favicon.png">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary">
@@ -33,7 +32,7 @@
         <div class="header-nav">
             <a href="https://github.com/kevster7000/Fruit-Identifier" target="_blank">
                 <span>GitHub</span>
-                <svg viewBox="-5 -5 105 105" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"/></svg>
+                <svg viewBox="-5 -5 105 105" xmlns="http://www.w3.org/2000/svg"><path stroke="transparent" fill-rule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"/></svg>
             </a>
             <button class="theme light">
                 <span>Theme</span>
@@ -49,7 +48,7 @@
                     <use href="#line" transform="rotate(-135, 50, 50)"/>
                 </svg>
                 <svg id="dark-theme-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
-                    <path stroke-width="8" stroke-linejoin="round" fill="none" d="M 50 15 A 35 35 0 1 0 85 50 A 18 18 0 0 1 50 15 Z"/>
+                    <path stroke-width="8" stroke-linejoin="round" fill="transparent" d="M 50 15 A 35 35 0 1 0 85 50 A 18 18 0 0 1 50 15 Z"/>
                 </svg>
             </button>
         </div>
@@ -59,11 +58,12 @@
             <h2>WHAT'S THAT FRUIT?</h2>
             <p>Don't know the name of a fruit in English? Upload an image of it to find out!</p>
         </section>
-        <div class="upload-container">
+        <div id="webcam-container" class="upload-container">
             <span><h2>Upload Image</h2></span>
+            <p class="error-message">Image type not supported</p>
             <div class="upload-btn-container">
                 <button class="upload-btn">Upload Image</button>
-                <input id="getFile" type="file">
+                <input id="getFile" name="getFile" type="file" accept=".jpg, .jpeg, .png, .svg">
                 <div class="divider">
                     <p><span>or</span></p>
                 </div>
@@ -71,23 +71,71 @@
             <div class="camera-btn-container">
                 <button class="camera-btn" type="button">Use Camera</button>
             </div>
-            <!--
-            <div id="webcam-container"></div>
-            <div id="label-container"></div> -->
+            
+            <!-- <button>
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
+                    <line x1="20" x2="80" y1="50" y2="50" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" />
+                    <line x1="20" x2="20" y1="20" y2="50" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" transform="rotate(45, 20, 50)"/>
+                    <line x1="20" x2="20" y1="20" y2="50" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" transform="rotate(135, 20, 50)"/>
+                </svg>
+                <p>Back</p>
+            </button>
+            <canvas></canvas>
+            <ol>
+                <li></li>
+            </ol> -->
+
         </div>
         <section class="fruits">
             <div class="fruits-header">
                 <h2>All Fruits Accounted for</h2>
             </div>
-            <ul class="fruits-list"> <!-- POPULATED WITH JS -->
-                <li>Hello</li>
-                <li>Hello</li>
-                <li>Hello</li>
-                <li>Hello</li>
-                <li>Hello</li>
-                <li>Hello</li>
-                <li>Hello</li>
-                <li>Hello</li>
+            <ul class="fruits-list">
+                <li>Apple</li>
+                <li>Avocado</li>
+                <li>Banana</li>
+                <li>Blackberry</li>
+                <li>Blueberry</li>
+                <li>Cantaloupe</li>
+                <li>Cherry</li>
+                <li>Cranberry</li>
+                <li>Cucumber</li>
+                <li>Date</li>
+                <li>Dragon Fruit</li>
+                <li>Durian</li>
+                <li>Elderberry</li>
+                <li>Fig</li>
+                <li>Gooseberry</li>
+                <li>Grapes</li>
+                <li>Grapefruit</li>
+                <li>Guava</li>
+                <li>Honeydew</li>
+                <li>Jackfruit</li>
+                <li>Jujube</li>
+                <li>Kiwi</li>
+                <li>Kumquat</li>
+                <li>Lemon</li>
+                <li>Lime</li>
+                <li>Lychee</li>
+                <li>Mandarin</li>
+                <li>Mango</li>
+                <li>Orange</li>
+                <li>Papaya</li>
+                <li>Passion Fruit</li>
+                <li>Peach</li>
+                <li>Pear</li>
+                <li>Persimmon</li>
+                <li>Pineapple</li>
+                <li>Plum</li>
+                <li>Pomegranate</li>
+                <li>Prickly pear</li>
+                <li>Pommelo</li>
+                <li>Rambutan</li>
+                <li>Raspberry</li>
+                <li>Star Fruit</li>
+                <li>Strawberry</li>
+                <li>Tomato</li>
+                <li>Watermelon</li> 
             </ul>
         </section>
     </main>

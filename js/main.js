@@ -1,15 +1,24 @@
 document.addEventListener("DOMContentLoaded", initApp);
 function initApp() {
 
-//Background Gradient
+/**********************************************************************************/
+/*                                  BG Gradient                                   */
+/**********************************************************************************/
+
 setInterval(() => {
     let deg = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--GRADIENT-DEG"));
     deg = (deg+1) % 360;
     document.documentElement.style.setProperty("--GRADIENT-DEG", deg + "deg");
 }, 70);
 
+
+/**********************************************************************************/
+/*                                     Themes                                     */
+/**********************************************************************************/
+
 //Theme Toggle
 let themeBtn = document.querySelector(".theme");
+
 themeBtn.addEventListener("click", () => {
     if(themeBtn.classList.contains("light")) toDarkTheme();
     else toLightTheme();
@@ -33,8 +42,7 @@ function toDarkTheme() {
 
 //Default Theme
 if(localStorage.getItem("theme")) {
-    let currTheme = localStorage.getItem("theme");
-    if(currTheme === "light") toLightTheme();
+    if(localStorage.getItem("theme") === "light") toLightTheme();
     else toDarkTheme();
 }
 else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -44,91 +52,119 @@ else {
     toLightTheme();
 }
 
+
+/**********************************************************************************/
+/*                                  Image Input                                   */
+/**********************************************************************************/
+
+const imageTypes = ["image/png", "image/jpg", "image/jpeg", "image/svg"];
+let uploadBtn = document.querySelector(".upload-btn");
+let inputFile = document.getElementById('getFile');
+
+uploadBtn.addEventListener("click", () => {
+    inputFile.click();
+});
+
+inputFile.addEventListener("change", () => {
+    checkFile(inputFile.files[0]);
+});
+
+async function checkFile(image) {
+    if(imageTypes.indexOf(image.type) === -1) showError();
+    else await predictImage(image);
 }
 
-/* Populate the all fruits list with 
-
-model.getTotalClasses()
-*/
-
-
-/* For use input
-
-model.predict(
-  image: HTMLImageElement | HTMLCanvasElement | HTMLVideoElement | ImageBitmap,
-  flipped = false
-)
-
-model.predictTopK(
-  image: HTMLImageElement | HTMLCanvasElement | HTMLVideoElement | ImageBitmap,
-  maxPredictions = 10,
-  flipped = false
-)
-
-*/
+function showError() {
+    let errorMsg = document.querySelector(".error-message");
+    errorMsg.style.setProperty("visibility", "visible");
+    errorMsg.style.setProperty("animation", "none");
+    setTimeout(() => errorMsg.style.setProperty("animation", "fade 1.5s 4s forwards"), 0);
+}
 
 
-/* FOR WEBCAM
-new tmImage.Webcam(
-    width = 400,
-    height = 400,
-    flip = false,
-)
+/**********************************************************************************/
+/*                                  Camera Input                                  */
+/**********************************************************************************/
 
-*/
+let webcam;
+let webcamContainer = document.getElementById("webcam-container");
+let cameraBtn = document.querySelector(".camera-btn");
 
-
-
-
-
-/* // More API functions here:
-// https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
-
-// the link to your model provided by Teachable Machine export panel
-const URL = "./my_model/";
-
-let model, webcam, labelContainer, maxPredictions;
-
-// Load the image model and setup the webcam
-async function init() {
-    const modelURL = URL + "model.json";
-    const metadataURL = URL + "metadata.json";
-
-    // load the model and metadata
-    // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
-    // or files from your local hard drive
-    // Note: the pose library adds "tmImage" object to your window (window.tmImage)
-    model = await tmImage.load(modelURL, metadataURL);
-    maxPredictions = model.getTotalClasses();
-
-    // Convenience function to setup a webcam
-    const flip = true; // whether to flip the webcam
-    webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
-    await webcam.setup(); // request access to the webcam
+cameraBtn.addEventListener("click", async () => {
+    const flip = true;
+    const width = 200;
+    const height = 200;
+    webcam = new tmImage.Webcam(width, height, flip);
+    await webcam.setup();
     await webcam.play();
+    webcamContainer.appendChild(webcam.canvas);
     window.requestAnimationFrame(loop);
-
-    // append elements to the DOM
-    document.getElementById("webcam-container").appendChild(webcam.canvas);
-    labelContainer = document.getElementById("label-container");
-    for (let i = 0; i < maxPredictions; i++) { // and class labels
-        labelContainer.appendChild(document.createElement("div"));
-    }
-}
+});
 
 async function loop() {
-    webcam.update(); // update the webcam frame
-    await predict();
+    webcam.update();
+    // await predictCamera();
     window.requestAnimationFrame(loop);
 }
 
-// run the webcam image through the image model
-async function predict() {
-    // predict can take in an image, video or canvas html element
-    const prediction = await model.predict(webcam.canvas);
+
+/**********************************************************************************/
+/*                                Teachable Machine                               */
+/**********************************************************************************/
+
+const URL = "./my_model/";
+let model, labelContainer, maxPredictions;
+const modelURL = URL + "model.json";
+const metadataURL = URL + "metadata.json";
+
+let isIos = false; 
+if (window.navigator.userAgent.indexOf('iPhone') > -1 || window.navigator.userAgent.indexOf('iPad') > -1) isIos = true;
+
+async function predictImage(image) {
+    let prediction = await model.predict(image);
     for (let i = 0; i < maxPredictions; i++) {
-        const classPrediction =
-            prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-        labelContainer.childNodes[i].innerHTML = classPrediction;
+        const classPrediction = prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+        labelContainer.childNodes[i].textContent = classPrediction;
     }
-} */
+}
+
+async function predictCamera() {
+    let prediction;
+    if (isIos) prediction = await model.predict(webcam.webcam);
+    else prediction = await model.predict(webcam.canvas);
+    for (let i = 0; i < maxPredictions; i++) {
+        const classPrediction = prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+        labelContainer.childNodes[i].textContent = classPrediction;
+    }
+}
+
+async function initPrediction() {
+    model = await tmImage.load(modelURL, metadataURL);
+    maxPredictions = model.getTotalClasses();
+}
+
+function initialUI() {
+    const content = `
+        <span><h2>Upload Image</h2></span>
+        <p class="error-message">Image type not supported</p>
+        <div class="upload-btn-container">
+            <button class="upload-btn">Upload Image</button>
+            <input id="getFile" name="getFile" type="file" accept=".jpg, .jpeg, .png, .svg">
+            <div class="divider">
+                <p><span>or</span></p>
+            </div>
+        </div>
+        <div class="camera-btn-container">
+            <button class="camera-btn" type="button">Use Camera</button>
+        </div>`;
+
+}
+
+function resultUI() {
+
+}
+
+function webcamUI() {
+
+}
+}

@@ -6,7 +6,7 @@
     background-color: var(--INPUT-BG-COLOR);
     border-radius: 20px;
     border: transparent;
-    box-shadow: var(--INPUT-SHADOW);
+    box-shadow: 0px 1px 14px var(--INPUT-SHADOW-COLOR);
     margin-inline: 2rem;
 
     .fruits-header {
