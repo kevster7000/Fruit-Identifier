@@ -137,7 +137,9 @@ async function predictImage(image) {
     labelContainer.innerHTML = "";
 
     for (let i = 0; i < maxPredictions; i++) {
-        const name = prediction[i].className;
+        let name = prediction[i].className;
+        if(name === "Pommelo") name = "Pomelo";
+
         const percent = (prediction[i].probability * 100);
         labelContainer.innerHTML += `<li style="--FRUIT-PERCENT: ${percent.toFixed(2)}%; --FRUIT-COLOR: var(--${name.toUpperCase().replaceAll(" ", "-")})"><span>${name}: ${Math.round(percent)}%</span></li>`;
 
@@ -159,7 +161,8 @@ async function predictCamera() {
     labelContainer.innerHTML = "";
 
     for (let i = 0; i < maxPredictions; i++) {
-        const name = prediction[i].className;
+        let name = prediction[i].className;
+        if(name === "Pommelo") name = "Pomelo";
         const percent = (prediction[i].probability * 100);
         labelContainer.innerHTML += `<li style="--FRUIT-PERCENT: ${percent.toFixed(2)}%; --FRUIT-COLOR: var(--${name.toUpperCase().replaceAll(" ", "-")})"><span>${name}: ${Math.round(percent)}%</span></li>`;
     }
