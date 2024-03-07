@@ -209,4 +209,138 @@
             }
         }
     }
+
+    &.result {
+        gap: 0;
+
+        .result-text {
+            font-size: 48px;
+            font-weight: 500;
+            padding: 1.5rem 1rem;
+            padding-bottom: 0;
+
+            span {
+                font-weight: 800;
+            }
+        }
+
+        .button-container {
+            @include flex(center, center, column);
+            gap: 0.75rem;
+
+            .upload-btn-container {
+                @include flex(center, center, row);
+                gap: 0.75rem;
+            
+                .upload-btn {
+                    border-radius: 14px;
+                    padding: 0.75rem 1.25rem;
+                    font-size: 22px;
+                }
+            
+                .camera-btn-container {
+                    margin-top: 0;
+            
+                    .camera-btn {
+                        border: 1px solid var(--TEXT-COLOR-SECONDARY);
+                        border-radius: 14px;
+                        padding: 0.75rem 1.25rem;
+                        font-size: 22px;
+                        transition: transform 0.2s, filter 0.2s;
+
+                        &:hover, &:focus-visible {
+                            transform: scale(1.025) translateY(-2px);
+                            filter: brightness(1.1);
+                        }
+                    
+                        &:active {
+                            transition: transform 0.1s, filter 0.1s;
+                            transform: scale(.975) translateY(1px);
+                            filter: brightness(0.9);
+                        }
+                    }
+                }
+            }
+        }
+
+        .result-container {
+            @include flex(center, center, row);
+            width: 100%;
+            flex-grow: 7;
+            padding: 1.5rem 5.5rem 3rem 5.5rem;
+            gap: 1.5rem;
+
+            .user-image {
+                width: 60%;
+                height: 100%;
+                border: 1px solid var(--TEXT-COLOR-SECONDARY);
+                border-radius: 14px;
+                background-position: center center;
+                background-size: cover;
+            }
+
+            img {
+                display: none;
+            }
+
+            ol {
+                width: 40%;
+                height: 100%;
+                list-style: none;
+                border: 1px solid var(--TEXT-COLOR-SECONDARY);
+                @include flex(space-between, center, column);
+    
+                li {
+                    white-space: nowrap;
+                    padding: 0.5rem 1rem;
+                    height: 100%;
+                    width: 100%;
+                    font-size: 16px;
+                    border-bottom: 1px solid var(--TEXT-COLOR-SECONDARY);
+                    position: relative;
+    
+                    &:last-child {
+                        border-bottom: none;
+                    }
+    
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: var(--FRUIT-PERCENT);
+                        height: 100%;
+                        background-color: var(--FRUIT-COLOR);
+                        z-index: 0;
+                    }
+    
+                    span {
+                        position: relative;
+                        z-index: 1;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media-xl {
+    .upload-container.result .result-container {
+        padding: 1.5rem;        
+    }
+}
+
+@include media-md {
+    .upload-container .webcam-body {
+        @include flex(unset, unset, column);
+
+        #webcam {
+            width: 100%;
+            aspect-ratio: 1/1;
+        }
+
+        ol {
+            width: 100%;
+        }
+    }
 }

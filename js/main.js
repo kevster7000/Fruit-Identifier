@@ -127,12 +127,27 @@ const metadataURL = URL + "metadata.json";
 let model;
 
 async function predictImage(image) {
+    await resultUI(image);
     await initModel();
-    let prediction = await model.predict(image);
+
+    let inputImg = document.querySelector(".result-container img");
+    let prediction = await model.predictTopK(inputImg, maxPredictions);
+
+    let labelContainer = document.getElementById("label-container");
+    labelContainer.innerHTML = "";
 
     for (let i = 0; i < maxPredictions; i++) {
-        const classPrediction = prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-        labelContainer.childNodes[i].textContent = classPrediction;
+        const name = prediction[i].className;
+        const percent = (prediction[i].probability * 100);
+        labelContainer.innerHTML += `<li style="--FRUIT-PERCENT: ${percent.toFixed(2)}%; --FRUIT-COLOR: var(--${name.toUpperCase().replaceAll(" ", "-")})"><span>${name}: ${Math.round(percent)}%</span></li>`;
+
+        if(i === 0) {
+            const resultText = document.querySelector(".result-text");
+            const firstChar = name[0].toUpperCase();
+            const isVowel = firstChar === "A" || firstChar === "E" || firstChar == "I" || firstChar === "O" || firstChar === "U";
+            
+            resultText.innerHTML = `Your Fruit is a${isVowel ? "n" : ""} <span style="--FRUIT-COLOR: var(--${name.toUpperCase().replaceAll(" ", "-")}">${name}</span>`;
+        }
     }
 }
 
@@ -192,8 +207,58 @@ async function initialUI() {
     cameraBtn.addEventListener("click", initCamera);
 }
 
-function resultUI() {
+async function resultUI(image) {
+    uploadContainer.classList.add("result");
 
+    const content = `
+        <span><h2>Upload Image</h2></span>
+        <p class="result-text">Your Fruit is</p>
+        <div class="button-container">
+            <div>
+                <p class="error-message">Image type not supported</p>
+                <p>Try Another</p>
+            </div>
+            <div class="upload-btn-container">
+                <div>
+                    <button class="upload-btn" type="button">Upload Image</button>
+                    <input id="getFile" name="getFile" type="file" accept=".jpg, .jpeg, .png, .svg">
+                </div>
+                <div class="camera-btn-container">
+                    <button class="camera-btn" type="button">Use Camera</button>
+                </div>
+            </div>
+        </div>
+        <div class="result-container">
+            <div class="user-image"></div>
+            <img src="" alt="">
+            <ol id="label-container">
+            </ol>
+        </div>
+    `;
+
+    uploadContainer.innerHTML = content;
+
+    let uploadBtn = document.querySelector(".upload-btn");
+    let inputFile = document.getElementById('getFile');
+    let cameraBtn = document.querySelector(".camera-btn");
+    let inputImg = document.querySelector(".user-image");
+    let tempImg = document.querySelector(".result-container img");
+
+    tempImg.src = window.URL.createObjectURL(image);
+    inputImg.style.setProperty("background-image", `url('${window.URL.createObjectURL(image)}')`);
+
+    uploadBtn.addEventListener("click", () => {
+        inputFile.click();
+    });
+
+    inputFile.addEventListener("change", () => {
+        checkFile(inputFile.files[0]);
+    });
+
+    cameraBtn.addEventListener("click", () => {
+        initCamera();
+        uploadContainer.classList.remove("result");
+    });
 }
 
 async function webcamUI() {
