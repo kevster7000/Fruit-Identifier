@@ -34,7 +34,7 @@
                 <span>GitHub</span>
                 <svg viewBox="-5 -5 105 105" xmlns="http://www.w3.org/2000/svg"><path stroke="transparent" fill-rule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"/></svg>
             </a>
-            <button class="theme light">
+            <button class="theme light" type="button">
                 <span>Theme</span>
                 <svg id="light-theme-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
                     <circle cx="50" cy="50" r="21" fill="transparent" stroke-width="8.5"/>
@@ -58,11 +58,11 @@
             <h2>WHAT'S THAT FRUIT?</h2>
             <p>Don't know the name of a fruit in English? Upload an image of it to find out!</p>
         </section>
-        <div id="webcam-container" class="upload-container">
+        <div class="upload-container webcamUI">
             <span><h2>Upload Image</h2></span>
             <p class="error-message">Image type not supported</p>
             <div class="upload-btn-container">
-                <button class="upload-btn">Upload Image</button>
+                <button class="upload-btn" type="button">Upload Image</button>
                 <input id="getFile" name="getFile" type="file" accept=".jpg, .jpeg, .png, .svg">
                 <div class="divider">
                     <p><span>or</span></p>
@@ -71,20 +71,26 @@
             <div class="camera-btn-container">
                 <button class="camera-btn" type="button">Use Camera</button>
             </div>
-            
-            <!-- <button>
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
-                    <line x1="20" x2="80" y1="50" y2="50" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" />
-                    <line x1="20" x2="20" y1="20" y2="50" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" transform="rotate(45, 20, 50)"/>
-                    <line x1="20" x2="20" y1="20" y2="50" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" transform="rotate(135, 20, 50)"/>
-                </svg>
-                <p>Back</p>
-            </button>
-            <canvas></canvas>
-            <ol>
-                <li></li>
-            </ol> -->
 
+            <!-- <span><h2>Upload Image</h2></span>
+            <p class="result">Your Fruit is a <span>Apple</span></p>
+            <div class="button-container">
+                <div class="upload-btn-container">
+                    <button class="upload-btn" type="button">Upload Image</button>
+                    <input id="getFile" name="getFile" type="file" accept=".jpg, .jpeg, .png, .svg">
+                </div>
+                <div class="camera-btn-container">
+                    <button class="camera-btn" type="button">Use Camera</button>
+                </div>
+            </div>
+            <div class="result-container">
+                <img src="" alt="Image from User Input">
+                <ol id="label-container">
+                    <li>asd</li>
+                    <li>asd</li>
+                    <li>asd</li>
+                </ol>
+            </div> -->
         </div>
         <section class="fruits">
             <div class="fruits-header">
@@ -103,21 +109,16 @@
                 <li>Date</li>
                 <li>Dragon Fruit</li>
                 <li>Durian</li>
-                <li>Elderberry</li>
                 <li>Fig</li>
-                <li>Gooseberry</li>
-                <li>Grapes</li>
+                <li>Grape</li>
                 <li>Grapefruit</li>
                 <li>Guava</li>
                 <li>Honeydew</li>
                 <li>Jackfruit</li>
-                <li>Jujube</li>
                 <li>Kiwi</li>
-                <li>Kumquat</li>
                 <li>Lemon</li>
                 <li>Lime</li>
                 <li>Lychee</li>
-                <li>Mandarin</li>
                 <li>Mango</li>
                 <li>Orange</li>
                 <li>Papaya</li>
@@ -128,8 +129,8 @@
                 <li>Pineapple</li>
                 <li>Plum</li>
                 <li>Pomegranate</li>
-                <li>Prickly pear</li>
                 <li>Pommelo</li>
+                <li>Prickly Pear</li>
                 <li>Rambutan</li>
                 <li>Raspberry</li>
                 <li>Star Fruit</li>
